@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         pAni = GetComponent <Animator>();   
+        pAni.SetBool("Run", false); 
     }
 
     // Start is called before the first frame update
@@ -38,24 +39,24 @@ public class PlayerController : MonoBehaviour
         if (isGrounded && Input.GetKeyDown(KeyCode.Space))
         {
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-            pAni.SetTrigger("JumpAction");
+            pAni.SetTrigger("Jump");
         }
 
         if (moveInput < 0)
-            transform.localScale = new Vector3(0.6f, 0.6f, 1f);
+            transform.localScale = new Vector3(-0.6f, 0.6f, 1f);
          
         if (moveInput > 0)
-            transform.localScale = new Vector3(-0.6f, 0.6f, 1f);
+            transform.localScale = new Vector3(0.6f, 0.6f, 1f);
 
         if (moveInput < 0)
         {
-            transform.localScale = new Vector3(0.6f, 0.6f, 1);
+            transform.localScale = new Vector3(-0.6f, 0.6f, 1);
             pAni.SetBool("Run", true);
 
         }
         else if (moveInput > 0)
         {
-            transform.localScale = new Vector3(-0.6f, 0.6f, 1);
+            transform.localScale = new Vector3(0.6f, 0.6f, 1);
             pAni.SetBool("Run", true);
 
         }
