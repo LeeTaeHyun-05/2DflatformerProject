@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 54492528}
   - component: {fileID: 54492527}
   - component: {fileID: 54492526}
+  - component: {fileID: 54492529}
   m_Layer: 0
   m_Name: DeadTilemap
   m_TagString: Respawn
@@ -1199,6 +1200,18 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &54492529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 54492524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d61f83c5ea431b34fb651f46cee0f429, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &551035870
 GameObject:
   m_ObjectHideFlags: 0

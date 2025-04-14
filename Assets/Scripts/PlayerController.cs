@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,10 +11,14 @@ public class PlayerController : MonoBehaviour
     public float jumpForce = 5;
     public Transform groundcheck;
     public LayerMask groundLayer;
+    public float Timer = 20.0f;
 
     private Rigidbody2D rb;
     private bool isGrounded;
     private Animator pAni;
+
+    bool isinvincible = false;
+
 
     private void Awake()
     {
@@ -32,7 +37,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         float moveInput = Input.GetAxisRaw("Horizontal");
-        rb. velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
+        rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
 
         isGrounded = Physics2D.OverlapCircle(groundcheck.position, 0.2f, groundLayer);
 
@@ -44,7 +49,7 @@ public class PlayerController : MonoBehaviour
 
         if (moveInput < 0)
             transform.localScale = new Vector3(-0.6f, 0.6f, 1f);
-         
+
         if (moveInput > 0)
             transform.localScale = new Vector3(0.6f, 0.6f, 1f);
 
@@ -63,18 +68,44 @@ public class PlayerController : MonoBehaviour
         else
             pAni.SetBool("Run", false);
 
+        Timer -= Time.deltaTime;
+        if (Timer <= 0)
+        {
+            isinvincible = false;
+            Timer = 20.0f;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Respawn"))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+               SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
         if( collision.CompareTag("Finish"))
         {
             collision.GetComponent<LevelObject>().MoveToNextLevel();
         }
+
+        if( collision.CompareTag("Item"))
+        {
+            Destroy(collision.gameObject);
+            isinvincible = true;
+           
+        }
+
+        if( collision.CompareTag("Trap"))
+        {
+            if (isinvincible == true)
+            {
+                Destroy(collision.gameObject);
+            }
+            else if (isinvincible == false)
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            }            
+        }
     }
+
 }

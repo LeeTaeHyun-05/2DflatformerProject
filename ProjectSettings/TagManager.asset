@@ -8,6 +8,8 @@ TagManager:
   - Coin
   - Ladder
   - Platform
+  - Item
+  - Trap
   layers:
   - Default
   - TransparentFX
