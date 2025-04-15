@@ -8,8 +8,9 @@ TagManager:
   - Coin
   - Ladder
   - Platform
-  - Item
   - Trap
+  - Invincible
+  - Speed
   layers:
   - Default
   - TransparentFX

@@ -12,12 +12,15 @@ public class PlayerController : MonoBehaviour
     public Transform groundcheck;
     public LayerMask groundLayer;
     public float Timer = 20.0f;
+    public float timer = 15.0f;
+
 
     private Rigidbody2D rb;
     private bool isGrounded;
     private Animator pAni;
 
     bool isinvincible = false;
+    bool isfast = false;
 
 
     private void Awake()
@@ -74,6 +77,13 @@ public class PlayerController : MonoBehaviour
             isinvincible = false;
             Timer = 20.0f;
         }
+
+        timer -= Time.deltaTime;
+        if (timer <= 0)
+        {
+            isfast = false;
+            timer = 15.0f;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -88,11 +98,11 @@ public class PlayerController : MonoBehaviour
             collision.GetComponent<LevelObject>().MoveToNextLevel();
         }
 
-        if( collision.CompareTag("Item"))
+        if( collision.CompareTag("Invincible"))
         {
             Destroy(collision.gameObject);
             isinvincible = true;
-           
+            Timer = 20.0f;
         }
 
         if( collision.CompareTag("Trap"))
@@ -105,6 +115,17 @@ public class PlayerController : MonoBehaviour
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }            
+        }
+        
+        if( collision.CompareTag("Speed"))
+        {
+            Destroy(collision.gameObject );
+            isfast = true;
+            timer = 15.0f;
+            if (isfast == true)
+            {
+                moveSpeed = 10.0f;
+            }
         }
     }
 
