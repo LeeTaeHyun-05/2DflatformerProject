@@ -8,19 +8,21 @@ public class PlayerController : MonoBehaviour
 {
 
     public float moveSpeed = 5f;
-    public float jumpForce = 5;
+    public float jumpForce = 8f;
     public Transform groundcheck;
     public LayerMask groundLayer;
     public float Timer = 20.0f;
     public float timer = 15.0f;
+    public float tImer = 15.0f;
 
 
     private Rigidbody2D rb;
     private bool isGrounded;
     private Animator pAni;
 
-    bool isinvincible = false;
-    bool isfast = false;
+    public bool isinvincible = false;
+    public bool isfast = false;
+    public bool isjump = false;
 
 
     private void Awake()
@@ -82,8 +84,25 @@ public class PlayerController : MonoBehaviour
         if (timer <= 0)
         {
             isfast = false;
+            if (isfast == false)
+            {
+                moveSpeed = 5;
+            }
             timer = 15.0f;
         }
+
+        tImer -= Time.deltaTime;
+        if (tImer <= 0)
+        {
+            isjump = false;
+            if (isjump == false)
+            {
+                jumpForce = 8;
+            }
+            tImer = 15.0f;
+            
+        }
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -125,6 +144,22 @@ public class PlayerController : MonoBehaviour
             if (isfast == true)
             {
                 moveSpeed = 10.0f;
+            }
+        }
+
+        if (collision.CompareTag("Enemy"))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+
+        if (collision.CompareTag("Jump"))
+        {
+            Destroy(collision.gameObject );
+            isjump = true;
+            tImer = 15.0f;
+            if (isjump == true)
+            {
+                jumpForce = 16.0f;
             }
         }
     }
