@@ -149,7 +149,14 @@ public class PlayerController : MonoBehaviour
 
         if (collision.CompareTag("Enemy"))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            if (isinvincible == true)
+            {
+                Destroy(collision.gameObject);
+            }
+            else if (isinvincible == false)
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            }
         }
 
         if (collision.CompareTag("Jump"))
@@ -159,7 +166,7 @@ public class PlayerController : MonoBehaviour
             tImer = 15.0f;
             if (isjump == true)
             {
-                jumpForce = 16.0f;
+                jumpForce = 10.0f;
             }
         }
     }
