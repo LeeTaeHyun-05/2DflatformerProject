@@ -11,6 +11,10 @@ TagManager:
   - Boundary
   - Obstacle
   - Jump
+  - Boss
+  - Ladder
+  - Platform
+  - Coin
   layers:
   - Default
   - TransparentFX
