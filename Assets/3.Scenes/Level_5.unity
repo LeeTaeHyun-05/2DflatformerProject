@@ -2656,7 +2656,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "\uCE90\uB9AD\uD130 \uC774\uB3D9: \uBC29\uD5A5\uD0A4 \uC88C\uC6B0\n\uCE90\uB9AD\uD130
-    \uC810\uD504: \uC2A4\uD398\uC774\uC2A4 \uBC14\n"
+    \uC810\uD504: \uC2A4\uD398\uC774\uC2A4 \uBC14\n\uD30C\uB780 \uBB3C\uC57D: 20\uCD08\uB3D9\uC548
+    \n\uBB34\uC801\uC0C1\uD0DC\n\uBE68\uAC04 \uBCF4\uC11D: 15\uCD08\uB3D9\uC548 \n\uC18D\uB3C4
+    \uC0C1\uC2B9\n\uC810\uD504 \uBB3C\uC57D: 15\uCD08 \uB3D9\uC548 \n\uC810\uD504\uB825
+    \uC0C1\uC2B9\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6f580b8011e444844a158f5303099c53, type: 2}
   m_sharedMaterial: {fileID: 284427908619277738, guid: 6f580b8011e444844a158f5303099c53, type: 2}
@@ -3360,7 +3363,7 @@ Transform:
   m_GameObject: {fileID: 1430380685}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.009, y: -0.112, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

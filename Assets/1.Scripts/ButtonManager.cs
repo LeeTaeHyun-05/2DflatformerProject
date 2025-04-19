@@ -37,6 +37,7 @@ public class ButtonManager : MonoBehaviour
     public void GameQuit()
     {
         Application.Quit();
+        Debug.Log("게임 종료");
     }
     
    
