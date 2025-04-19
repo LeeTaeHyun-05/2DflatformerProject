@@ -40,6 +40,10 @@ public class ButtonManager : MonoBehaviour
         Debug.Log("게임 종료");
     }
     
+    public void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }    
    
 
    
