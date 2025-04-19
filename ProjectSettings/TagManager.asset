@@ -15,6 +15,7 @@ TagManager:
   - Ladder
   - Platform
   - Coin
+  - End
   layers:
   - Default
   - TransparentFX
