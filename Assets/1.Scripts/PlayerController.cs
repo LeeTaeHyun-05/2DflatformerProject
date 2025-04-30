@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     public float Timer = 20.0f;
     public float timer = 15.0f;
     public float tImer = 15.0f;
+    float score;
 
 
     private Rigidbody2D rb;
@@ -31,7 +32,9 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         pAni = GetComponent <Animator>();   
-        pAni.SetBool("Run", false); 
+        pAni.SetBool("Run", false);
+
+        score = 1000f;
     }
 
     // Start is called before the first frame update
@@ -109,6 +112,8 @@ public class PlayerController : MonoBehaviour
 
         }
 
+        score -= Time.deltaTime;
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -120,6 +125,8 @@ public class PlayerController : MonoBehaviour
 
         if( collision.CompareTag("Finish"))
         {
+            HighScore.TrySet(SceneManager.GetActiveScene().buildIndex, (int)score);
+            
             collision.GetComponent<LevelObject>().MoveToNextLevel();
         }
 

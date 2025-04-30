@@ -7,6 +7,7 @@ public class ButtonManager : MonoBehaviour
 {
     public GameObject MenuUI;
     public GameObject HelpUI;
+    public GameObject LeaderBoardUI;
     
 
     // Start is called before the first frame update
@@ -45,6 +46,14 @@ public class ButtonManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }    
    
+    public void LeaderBoardOpen()
+    {
+        LeaderBoardUI.SetActive(true);
+    }
 
-   
+    public void LeaderBoardClose()
+    {
+        LeaderBoardUI.SetActive(false);
+    }
+
 }
